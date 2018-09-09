@@ -1,0 +1,70 @@
+
+.custom-con > a {
+  color: #00B7FF;
+}
+
+.custom-con---- {
+  padding: 20px;
+  background-color: #efefef;
+  width: 90%;
+  border-radius: 6px;
+}
+.custom-con > h3 a {
+  text-decoration: none;
+  padding: 2px 35px;
+  background-color: #00AE4D;
+  border-radius: 6px;
+  color: #FFFFFF;
+}
+
+.custom-con > h3 a:hover, .custom-con table tr td button:hover {
+  background-color: #78F5AE;
+  color: #999999;
+}
+
+.custom-con table {
+  width: 720px;
+}
+
+.custom-con table tr td {
+  padding: 5px;
+}
+
+
+
+.custom-con table tr td button {
+  border: solid 1px #AABF5C;
+  background-color: #00AE4D;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: #FFFFFF!important;
+  margin: 10px 0;
+  padding: 10px 20px;
+}
+
+.custom-con form button {
+  border: solid 1px #CB2027;
+  background-color: #DD4B39;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 10px 0;
+  padding: 0px 20px;
+}
+
+.custom-con .list-table {
+  width: 360px;
+  border: solid 2px #DDDDDD;
+  border-spacing: 0;
+}
+
+.custom-con .list-table th {
+  border-bottom: solid 2px #DDDDDD;
+}
+
+.field-required{
+
+color: #b94a48;
+padding-left: 3px;
+
+}

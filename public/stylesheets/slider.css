@@ -1,0 +1,40 @@
+.feedback{
+	position:absolute;
+	right:0;
+	bottom:0;
+}
+.feedback a {
+	display:block;
+	height:35px;
+	width:100px;
+	text-align:center;
+	background:red;
+	border:2px solid #fff;
+	outline:1px solid #a1a1a1;	
+	padding:5px;
+	float:right;
+	cursor:pointer;
+	
+	/*Font*/
+	color:#FFF;
+	font-weight:bold;
+	font-size:18px;
+}
+
+.feedback .form{
+	clear:both;
+	height:300px;
+	width:450px;
+	border:1px solid #000;
+	background:#fff;
+	padding:15px;
+	display: none;
+}
+.feedback .form textarea{
+	height:170px;
+	width:400px;
+	padding:5px;
+}
+.feedback .status{
+	font-size:16px;
+}

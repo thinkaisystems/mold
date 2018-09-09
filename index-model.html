@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+
+	<title>LEARNING</title>
+
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+
+	<link href="/sortablefiles/ply.css" rel="stylesheet" type="text/css">
+	<link href="/sortablefiles/css" rel="stylesheet" type="text/css">
+
+	<link href="/sortablefiles/app.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<style>
+
+#divPleasewait{
+    position: absolute;
+    top: 193px;
+    left: 460px;
+    width: 100%;
+    height: 100%;
+    /* background-color: #60E; */
+    /* background-image: url(ajax-loader.gif); */
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10000000;
+    /* opacity: 0.4; */
+}
+	</style>
+
+</head>
+<body style="">
+	<div>
+		<h4>Select Connection : <input id="connectionList" type="text" placeholder="Connection Name"></h4>
+		<input id="connectionList-value" type="text" name="Connection ID" style="display:none">
+	</div>
+	<div class="container">
+	<!-- padding: 80px 150px 0; height: 160px;-->
+		<div style="padding: 80px 150px 0">
+			<a class="logo" href="#"><img src="logo.png"></a>			
+			<!-- <h1 data-force="40" data-force-y="2.5">TESMP&nbsp;TEST.</h1> -->
+		</div>
+	</div>
+
+
+	<!-- Connected lists -->
+	<div class="container" style="height: 320px;padding:20px;">
+		<div data-force="30" class="layer block" style="left: 14.5%; top: 0; width: 37%">
+			<div class="layer title">Fields</div>
+			<ul id="actFields" class="block__list block__list_words">				
+				<li style="">Field1</li>
+				<li style="">Field2</li>
+				<li draggable="false" class="" style="">Field3</li>
+				<li style="">Field4</li>
+				<li>Field5</li>
+			</ul>
+		</div>
+
+		<div data-force="18" class="layer block" style="left: 58%; top: 0px; width: 40%;">
+			<div class="layer title">Selected</div>
+			<ul id="selFields" class="block__list block__list_tags">
+				<li draggable="false" class="" style="">bytes</li>
+				<li style="">remote_ip</li>
+				<li>request</li>
+				<li draggable="false" class="" style="">response</li>
+				<li style="">Date</li>
+				<li style="">Hour</li>
+			<li draggable="false" class="" style="">Minute</li>
+			<li style="">Seconds</li>
+			</ul>
+		</div>
+		
+		<div data-force="18" class="layer block" style="left: 58%; top: 350px;">
+		<input name="btnNext" id="btnNext" value="Next" type="button" class="nextButton"/>
+		
+		</div>
+		
+		<div data-force="18" class="layer block" style="top:400px;">
+		
+		<textarea name="txtMessage" id="txtMessage" rows="10" cols="140">----------LOGS------</textarea>
+		
+		<ul id="messages"></ul>
+		</div>
+		
+	<div id="divPleasewait">
+		<div>
+			<img src="/images/loader_seq.gif"/>
+		</div>
+	</div>
+		
+	</div>
+
+
+	
+	
+	
+	
+	<script src="./sortablefiles/Sortable.js"></script>
+	
+	<script src="./sortablefiles/app.js"></script>
+	
+	
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+ <script type="text/javascript" src="/js/jquery.redirect.js"></script>
+ 
+ <script  src="/socket.io/socket.io.js"></script>
+ <script>
+ 
+ var socket = io.connect('http://10.128.116.78:3000/')
+
+    socket.on('news', function (data) {
+      //var li = document.createElement('li'), text = document.createTextNode('News: ' + data.msg + ' (' + data.count + ')' );
+      //li.appendChild(text);
+      //document.getElementById('messages').appendChild(li);
+	  
+	  $("#txtMessage").val($("#txtMessage").val()+" \n "+data.msg);
+	  document.getElementById("txtMessage").scrollTop = document.getElementById("txtMessage").scrollHeight 
+    })
+
+    socket.on('private', function (data) {
+      var li = document.createElement('li')
+        , text = document.createTextNode('Private: ' + data.msg)
+
+      li.appendChild(text)
+      document.getElementById('messages').appendChild(li)
+
+      socket.emit('private', {msg: 'Thank you for your message'})
+    })
+ 
+ </script>
+
+ 
+ 
+	<script>
+  
+  
+  
+  $(document).ready(function() {
+  
+  $("#divPleasewait").hide();
+  
+  $("#txtMessage").val("");
+  
+
+var configFieldList="";
+$('#selFields li').each(function(){// id of ul
+//console.log($(this).text());
+	configFieldList=$(this).text()+","+configFieldList;
+});
+ var configFieldNamesTemp= configFieldList.split(',');
+ var configFieldNames = configFieldNamesTemp.filter(function(v){return v!==''});
+ console.log(configFieldNames);
+//  $('.selectpicker').selectpicker();
+  //console.log('READY');
+    
+   $('#btnNext').click(function () {
+   
+   
+   $("#btnNext").hide();
+   $("#divPleasewait").show();
+      
+
+
+   
+        
+		$.ajax({
+		type: 'POST',
+		url: '/python',
+		data: JSON.stringify ({filename:'invoke-script',config_field_name:configFieldNames}),
+		beforeSend: function( xhr ) {
+			$("#txtMessage").val("");
+		},
+		success: function(data) { 
+			console.log(data);			
+			if (typeof(data.redirectto) == 'string'){
+              //window.location = data.redirectto;			  
+			  $("#btnNext").show();
+			  $("#divPleasewait").hide();
+			  
+			  //$.redirect(data.redirectto, {'arg1': 'value1', 'arg2': 'value2'},"GET",null,null,true);
+			  
+			}
+		},
+		contentType: "application/json",
+		dataType: 'json'
+		});
+	  
+    });
+  
+  
+     $('#uploadForm').submit(function() {
+        $("#status").empty().text("File is uploading...");
+        $(this).ajaxSubmit({
+            error: function(xhr) {
+          status('Error: ' + xhr.status);
+            },
+            success: function(response) {
+             console.log(response)
+            $("#status").empty().text(response);
+            }
+    });
+    return false;
+    });  
+
+
+	//var autoDatasource=[{label: "",value: ""}];
+var autoDatasource=[{}];
+
+$.getJSON("http://10.128.116.78:3000/connection-api", function (data) {
+            for(var i=0;i<data.connections.length;i++)
+			{
+				autoDatasource.push( { label:data.connections[i].ConName, value:data.connections[i]._id } );
+			}
+});
+	
+	
+$("#connectionList").autocomplete({
+	source: autoDatasource,
+	focus: function(event, ui) {
+		// prevent autocomplete from updating the textbox
+		event.preventDefault();
+		// manually update the textbox
+		$(this).val(ui.item.label);
+	},
+	select: function(event, ui) {
+		// prevent autocomplete from updating the textbox
+		event.preventDefault();
+		// manually update the textbox and hidden field
+		$(this).val(ui.item.label);
+		$("#connectionList-value").val(ui.item.value);
+	}
+});
+	
+	
+	
+	
+});
+</script>
+	
+	</body>
+</html>
+
+
+	

@@ -1,0 +1,36 @@
+var mongoose = require('mongoose');
+
+var ModelSchema = new mongoose.Schema({  
+  "ConId": String,
+  "TrainConId": String,
+  "ModelName": String,
+  "MainField": String,
+  "MainFieldFilter": String,
+  "MainFieldFilterVal1": String,
+  "MainFieldFilterVal2": String,
+  "FieldsSelected": String,  
+  "ModelType": String,
+  "ModelMethod": String,
+  "InfluencingFields": String,
+  "TimeSeriesField": String,
+  "TimeSeriesFieldFormat": String,
+  "IntervalSpan": String,
+  "TimeSpanFrom": { type: Date, default: Date.now },
+  "TimeSpanTo": Date,
+  "NumOfRecords": Number,
+  "AggregationFun": String,
+  "IsHistoryData": Boolean,
+  "HistoryData_ConID":Number,
+  "NNLoss": String,
+  "NNMetric": String,
+  "NNOptimizer": String,
+  "NN_NB_Epoch":Number,
+  "NNBatchSize":Number,
+  "NNThreshold":Number,
+  "SVMKernal": String,
+  "SVM_NU":Number,
+  "SVMGamma":Number,
+  "updated_at": { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model('NNModel', ModelSchema);

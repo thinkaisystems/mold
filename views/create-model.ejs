@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Parser - Model</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel='stylesheet' href='/stylesheets/style-model.css' />
+	
+	
+	
+	<link rel='stylesheet' href='/stylesheets/jquery.multiselect.css' />
+	<link rel='stylesheet' href='/stylesheets/bootstrap-select.min.css' />
+	
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css"/>
+	
+<style>
+.bootstrap-select .filter-option {
+  white-space: normal;
+}
+
+div.btn-group.bootstrap-select{
+height:auto;
+}
+
+.multi-drp-item-disabled{
+	pointer-events: none;
+	background-color:darkgray;
+}
+
+</style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Parser</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 1</strong>
+                                        <span class="pull-right text-muted">40% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 2</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 3</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 4</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="../../index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+						<li>
+							<a href="../../connection-list"><i class="fa fa-cubes fa-fw"></i> Connections</a>
+						</li>
+						
+						
+						
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+
+		
+<div class="container custom-con" >
+      <h3><a href="/model-list">Model List</a></h3>
+      <h1>Create New Model</h1>
+      <form id="frmNNCreateModel" action="/models/save" method="post">
+        <table>
+          <tbody>
+            <tr>
+              <td>ModelName<span class="field-required">*</span></td>
+              <td><input type="text" name="ModelName" required /></td>
+            </tr>
+			<tr>
+			<td>Connection Name<span class="field-required">*</span></td>
+              <td><input id="connectionList" type="text" placeholder="Connection Name" required>
+                <input id="connectionList-value" type="text" name="ConId" style="display:none"></td>			
+			</tr>
+			<td>Training Connection</td>
+              <td><input id="train-connectionList" type="text" placeholder="Training Connection">
+                <input id="train-connectionList-value" type="text" name="TrainConId" style="display:none"></td>			
+			</tr>
+			<tr>
+              <td>Y-Axis<span class="field-required">*</span></td>
+			  <td>
+			  <!-- <select id="MainField" name="MainField" class="selectpicker show-menu-arrow form-control" multiple data-max-options="15"  data-live-search="true"></select>			   -->
+				<div class="row">			
+				<div  class="col-lg-3">
+				<select id="MainField" name="MainField"  class="selectpicker show-tick form-control" data-live-search="true" required>	
+				<option name="" value="">Nothing Selected</option>
+				</select>	
+				</div>
+				<div  class="col-lg-3">
+				<select id="MainFieldFilter" name="MainFieldFilter"  class="selectpicker show-tick form-control" data-live-search="false">	
+				<option name="" value="mainfieldfilter">-Filter-</option>
+						<option name="=" value="=" >=</option>
+						<option name="!=" value="!=" >!=</option>
+						<option name=">" value=">" >></option>
+						<option name="<" value="<" ><</option>
+						<option name=">=" value=">=" >>=</option>
+						<option name="<=" value="<=" ><=</option>
+						<option name="like" value="like" >like</option>
+						<option name="btw" value="btw" >btw</option>						
+				</select>
+				</div>
+				<div  class="col-lg-3" style="padding-top:20px">
+				<input id="MainFieldFilterVal1" name="MainFieldFilterVal1" type="text" placeholder="">
+				</div>
+				<div id="divMainFieldFilterVal2"  class="col-lg-3" style="padding-left:5px;padding-top:20px">
+				<input id="MainFieldFilterVal2" name="MainFieldFilterVal2" type="text" placeholder="">
+				</div>
+				</div>
+			  </td>
+            </tr>
+            <tr>
+              <td>InfluencingFields</td>
+			  <td>
+				<select id="FieldsSelected" name="FieldsSelected" multiple="multiple" class="3col active">				
+				</select>
+			  
+			  </td>
+            </tr>
+            <tr>
+              <td>X-Axis</td>
+              <td>
+				<select id="TimeSeriesField" name="TimeSeriesField"  class="selectpicker show-tick form-control" data-live-search="true">	</select>	  
+			  </td>
+            </tr>			
+			<tr>
+              <td>Interval Span</td>
+              <td>
+			  <div class="row">
+			  <div  class="col-lg-4" style="padding-left:15px;padding-top:20px">
+			  <input type="text" name="IntervalSpan" id="IntervalSpan" style="display:none" />
+			  <input type="text" name="txtIntervalSpan" id="txtIntervalSpan" class="intervalspan-watch" size="6" style="float:left" />	
+				</div>			
+				<div  class="col-lg-8">				
+						<select id="drpIntervalSpan" name="drpIntervalSpan" id="drpIntervalSpan"  class="selectpicker show-tick form-control intervalspan-watch" data-live-search="true">	
+							<option name="" value="">--Interval Span--</option>
+							<option  value="N" name="nanoseconds" >nanoseconds</option>
+							<option  value="U" name="microseconds" >microseconds</option>
+							<option  value="L" name="milliseconds" >milliseconds</option>
+							<option  value="S" name="secondly" >secondly</option>
+							<option  value="T" name="minutely" >minutely</option>
+							<option  value="H" name="hourly" >hourly</option>
+							<option  value="W" name="weekly" >weekly</option>
+							<option  value="D" name="calendar" >calendar</option>
+							<option  value="M" name="month end" >month end</option>
+							<option  value="MS" name="month start" >month start</option>
+							<option  value="YS" name="year start" >year start</option>
+							<option  value="Y" name="year end" >year end</option>
+							<option  value="B" name="business day" >business day</option>
+							<option  value="BH" name="business hour" >business hour</option>
+							<option  value="BMS" name="business month start" >business month start</option>
+							<option  value="BM" name="business month end" >business month end</option>
+							<option  value="BYS" name="business year start" >business year start</option>
+							<option  value="BY" name="business year end" >business year end</option>							
+						</select>
+					</div>
+				</div>
+			  </td>
+            </tr>
+			<tr>
+              <td>AggregationFun</td>
+			  <td>			  
+				<select id="AggregationFun" name="AggregationFun"  class="selectpicker show-tick form-control" data-live-search="true">	
+				<option name="" value="0">--Aggregation--</option>
+						<option name="sum" value="sum" >Sum</option>
+						<option name="count" value="count" >Count</option>
+						<option name="average" value="average" >Average</option>
+						<option name="mean" value="mean" >Mean</option>
+						<option name="median" value="median" >Median</option>
+						<option name="product" value="product" >Product</option>
+						<option name="maximum" value="maximum" >Maximum</option>
+						<option name="cumsum" value="cumsum" >Cumsum</option>
+						<option name="cumprod" value="cumprod" >Cumprod</option>
+						<option name="minimum" value="minimum" >Minimum</option>
+				</select>	  
+			  </td>
+            </tr>			
+            <tr>
+              <td>Num Of Records<span class="field-required">*</span></td>
+              <td><input type="number" name="NumOfRecords" required /></td>
+            </tr>            
+			<tr>
+              <td>ModelType<span class="field-required">*</span></td>
+			  <td>			  
+				<select id="ModelType" name="ModelType"  class="selectpicker show-tick form-control" data-live-search="false" required>	
+				<option name="" value="">--ModelType--</option>
+						<option name="anomaly" value="anomaly" >Anomaly</option>
+						
+				</select>	  
+			  </td>
+            </tr>
+			<tr>
+              <td>ModelMethod</td>
+			  <td>			  
+				<select id="ModelMethod" name="ModelMethod"  class="selectpicker show-tick form-control" data-live-search="false">					
+				</select>	  
+			  </td>
+            </tr>
+			<tr class="mdl-nn">
+              <td>Loss</td>
+			  <td>			  
+				<select id="NNLoss" name="NNLoss"  class="selectpicker show-tick form-control" data-live-search="false">	
+						<option name="mean_absolute_error" value="mean_absolute_error">mean_absolute_error</option>
+						<option name="mean_squared_error" value="mean_squared_error" >mean_squared_error</option>
+						<option name="mean_absolute_percentage_error" value="mean_absolute_percentage_error" >mean_absolute_percentage_error</option>
+						<option name="mean_squared_logarithmic_error" value="mean_squared_logarithmic_error" >mean_squared_logarithmic_error</option>
+				</select>	  
+			  </td>
+            </tr>
+			<tr class="mdl-nn">
+              <td>Metric</td>
+			  <td>			  
+				<select id="NNMetric" name="NNMetric"  class="selectpicker show-tick form-control" data-live-search="false">	
+						<option name="mae" value="mae">mean_absolute_error</option>
+						<option name="mse" value="mse" >mean_squared_error</option>
+						<option name="mape" value="mape" >mean_absolute_percentage_error</option>
+						<option name="msle" value="msle" >mean_squared_logarithmic_error</option>
+				</select>	  
+			  </td>
+            </tr>
+			<tr class="mdl-nn">
+              <td>Optimizer</td>
+			  <td>			  
+				<select id="NNOptimizer" name="NNOptimizer"  class="selectpicker show-tick form-control" data-live-search="false">	
+						<option name="adam" value="adam">adam</option>
+						<option name="sgd" value="sgd" >sgd</option>
+						<option name="rmsprop" value="rmsprop" >rmsprop</option>
+				</select>	  
+			  </td>
+            </tr>
+			<tr class="mdl-nn">
+              <td>Epoch</td>
+              <td><input type="number" name="NN_NB_Epoch" min="0" max="9999" /></td>
+            </tr>
+			<tr class="mdl-nn">
+              <td>Batch size</td>
+              <td><input type="number" name="NNBatchSize" min="0"  max="9999" /></td>
+            </tr>
+			<tr class="mdl-nn">
+              <td>Threshold</td>
+              <td><input type="number" name="NNThreshold" min="0"  max="3" value="3" /></td>
+            </tr>
+			<tr class="mdl-svm">
+              <td>Kernal</td>
+			  <td>			  
+				<select id="SVMKernal" name="SVMKernal"  class="selectpicker show-tick form-control" data-live-search="false">	
+						<option name="rbf" value="rbf">rbf</option>
+						<option name="linear" value="linear" >linear</option>
+						<option name="poly" value="poly" >poly</option>
+						<option name="sigmoid" value="sigmoid" >sigmoid</option>
+				</select>	  
+			  </td>
+            </tr>
+			<tr class="mdl-svm">
+              <td>NU</td>
+              <td><input type="number" name="SVM_NU" min="0"  max="1" step="0.01" value="0.05" /></td>
+            </tr>
+			<tr class="mdl-svm">
+              <td>Gamma</td>
+              <td><input type="number" name="SVMGamma" min="0"  max="1" step="0.001" value="0.001" /></td>
+            </tr>
+			<tr>
+              <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+		
+   
+
+        </div>
+
+        <!-- /#wrapper -->
+    </div>
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+	<!-- Custom Theme JavaScript -->
+        <script src="/dist/js/sb-admin-2.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    
+	<script src="/js/jquery.multiselect.js"></script>
+	<script src="/js/bootstrap-select.min.js"></script>
+	
+		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.js"></script>
+	
+	
+    <script>
+        $(document).ready(function() {
+
+			//$( "#dtTimeSpanFrom" ).datepicker();			
+			//$('#dtTimeSpanFrom').datetimepicker({format:"Y-m-d H:i:s"});
+			
+					
+			var _fieldListArr_first='';
+			var _fieldTime_Series_Field_List='';
+			var autoDatasource = [{}];
+
+                $.getJSON("http://"+_global_parser_hostip+":"+_global_parser_hostport+"/connection-api", function(data) {
+                    for (var i = 0; i < data.connections.length; i++) {
+                        autoDatasource.push({
+                            label: data.connections[i].ConName,
+                            value: data.connections[i]._id
+                        });
+                    }
+                });
+
+                $("#connectionList").autocomplete({
+                    source: autoDatasource,
+                    focus: function(event, ui) {
+                        // prevent autocomplete from updating the textbox
+                        event.preventDefault();
+                        // manually update the textbox
+                        $(this).val(ui.item.label);
+                    },
+                    select: function(event, ui) {
+                        // prevent autocomplete from updating the textbox
+                        event.preventDefault();
+                        // manually update the textbox and hidden field
+                        $(this).val(ui.item.label);
+                        $("#connectionList-value").val(ui.item.value);
+						
+						$('#MainField').find('option').remove();
+						$('#FieldsSelected').find('option').remove();
+						$('div.ms-options').find('ul li').remove();
+						$('#TimeSeriesField').find('option').remove();					
+						
+						_fieldListArr_first='';
+						
+						$('#MainField').selectpicker('refresh');						
+						$('#TimeSeriesField').selectpicker('refresh');
+						fnRefreshDropDown(ui.item.value);		
+
+						
+					
+                    }
+                });
+				
+				
+				
+				$("#train-connectionList").autocomplete({
+                    source: autoDatasource,
+                    focus: function(event, ui) {                        
+                        event.preventDefault();                        
+                        $(this).val(ui.item.label);
+                    },
+                    select: function(event, ui) {                        
+                        event.preventDefault();                        
+                        $(this).val(ui.item.label);
+                        $("#train-connectionList-value").val(ui.item.value);						
+						//fnRefreshDropDown(ui.item.value);						
+                    }
+                });
+			
+			
+			
+			function fnRefreshDropDown(Con_id)
+			{
+			
+				var _fieldListArr=[];
+						$.getJSON("http://"+_global_parser_hostip+":"+_global_parser_hostport+"/fieldslist-api/"+Con_id, function(data) {
+							
+							_fieldListArr=data.fieldsList.Field_list.split('|');
+							_fieldTime_Series_Field_List=data.fieldsList.Time_Series_Field_List;
+																					
+							var liTemp,lblTemp,inputTemp,liCnt=$('div.ms-options').find('ul li').length;
+							$('#TimeSeriesField').append($('<option>', {value: '',text: ''}));
+							for (var i = 0; i < _fieldListArr.length; i++) {
+								if(_fieldListArr[i] !=""){
+								
+								$('#MainField').append($('<option>', {value: _fieldListArr[i],text: _fieldListArr[i]}));
+								$('#TimeSeriesField').append($('<option>', {value: _fieldListArr[i],text: _fieldListArr[i]}));
+								
+								
+									//console.log( _fieldListArr[i] + $('#FieldsSelected'));
+									$('#FieldsSelected').append($('<option>', {value: _fieldListArr[i],text: _fieldListArr[i]}));									
+									liCnt++;
+									 liTemp=$('<li>', {'data-search-term': _fieldListArr[i]})
+									 lblTemp = $("<label>").text(_fieldListArr[i]).css('padding-left','20px');
+									 inputTemp=$('<input>', {type:"checkbox",title:_fieldListArr[i],id:"ms-opt-"+liCnt,value:_fieldListArr[i]})
+
+									lblTemp.append(inputTemp);
+									liTemp.append(lblTemp);
+									$('div.ms-options').find('ul').append(liTemp);
+								}
+							}
+							_fieldListArr_first=_fieldListArr[1];
+							$('#MainField').selectpicker('refresh');
+							//$('#TimeSeriesField').selectpicker('val', _fieldListArr[2]);							
+							$('#TimeSeriesField').selectpicker('refresh');
+							
+							//console.log("_fieldListArr_first  "+_fieldListArr_first);
+							//$('#TimeSeriesField option[value="'+_fieldListArr_first+'"]').prop('disabled', true);							
+							//$('#TimeSeriesField').selectpicker('render');
+							
+						});
+			
+			}
+			
+			
+			
+			$('select[multiple].active.3col').multiselect({
+								columns: 3,
+								placeholder: 'Select Fields',
+								search: true,
+								showCheckbox  : true, 
+								searchOptions: {
+								'default': 'Search Fields'
+								},
+								selectAll: true
+							});
+							
+			///$('#MainField').on('change', function(){
+			
+			var _removedField="";
+			
+			$('#MainField').on('hidden.bs.select', function (e) {
+				var selected = $(this).find("option:selected").val();			
+						
+						//fnRefreshDropDown($("#connectionList-value").val());
+				
+				
+				console.log(selected);
+				
+				var liTemp,lblTemp,inputTemp;
+				
+				
+				if(_removedField !="")
+				{														
+					$('div.ms-options').find('ul li label').each(function(){																					
+						if($(this).text () == _removedField){
+							$(this).parent().removeClass('multi-drp-item-disabled');
+						}
+					});
+					$('#TimeSeriesField option[value="'+_removedField+'"]').prop('disabled', false);									
+				}
+				
+				$('#TimeSeriesField option[value="'+selected+'"]').prop('disabled', true);				
+				$('#TimeSeriesField').selectpicker('render');
+				
+				$('select[multiple].active.3col').multiselect( 'reset' );
+				
+				$('div.ms-options').find('ul li label').each(function(){				
+						if($(this).text () == selected){
+							console.log($(this).text());
+							_removedField=selected;
+							//$(this).parent().remove();							
+							$(this).parent().addClass('multi-drp-item-disabled');
+						}
+				});
+			});	
+			
+			
+			
+			$('#ModelType').on('changed.bs.select', function (e) {
+						
+				var selected = $(this).find("option:selected").val();
+				//console.log("selected ----------------"+selected);
+				//fnMainFieldChanged(selected);
+				$('#ModelMethod').find('option').remove();
+				if(selected== 'forecast')
+				{
+					$('#ModelMethod').append($('<option>', {value: 'LSTM',text: 'LSTM'}));
+					$('#ModelMethod').append($('<option>', {value: 'FB-Prohpet',text: 'FB-Prohpet'}));
+					$('.mdl-nn').hide();
+				}
+				else if(selected== 'anomaly')
+				{
+					$('#ModelMethod').append($('<option>', {value: 'NN',text: 'NN'}));
+					$('#ModelMethod').append($('<option>', {value: 'SVM',text: 'SVM'}));
+					$('.mdl-nn').show();
+				}
+				else if(selected== '')
+				{
+					$('#ModelMethod').find('option').remove();
+					$('.mdl-nn').hide();
+				}
+				
+				$('#ModelMethod').selectpicker('refresh');
+				
+			});	
+			
+			
+			
+			$(".intervalspan-watch").change(function() {	
+				var drpVal=$("#drpIntervalSpan").val();			
+				var txtVal=$("#txtIntervalSpan").val();		
+
+				if(drpVal!='' && drpVal!='IntervalSpan' && txtVal!='')
+				{	
+					$("#IntervalSpan").val(txtVal+"~"+drpVal);
+					//console.log($("#IntervalSpan").val());				
+				}
+			});
+			
+			
+			
+			
+			$('.mdl-nn').hide();
+			$('.mdl-svm').hide();
+			$('#ModelMethod').on('changed.bs.select', function (e) {
+			
+				var selected = $(this).find("option:selected").val();								
+				console.log(selected);		
+				if(selected== 'NN')
+				{
+					$('.mdl-nn').show();
+					$('.mdl-svm').hide();
+				}
+				else
+				{
+				$('.mdl-nn').hide();
+					$('.mdl-svm').show();
+				}
+				
+			});	
+			
+			
+			$('#divMainFieldFilterVal2').hide();
+			$('#MainFieldFilter').on('changed.bs.select', function (e) {
+			
+				var selected = $(this).find("option:selected").val();												
+				if(selected== 'btw')
+				{
+					$('#divMainFieldFilterVal2').show();
+				}
+				else
+				{
+					$('#divMainFieldFilterVal2').hide();
+				}
+				
+			});	
+			
+			
+			
+			$('#TimeSeriesField').on('changed.bs.select', function (e) {
+						
+				var selected = $(this).find("option:selected").val();
+				//console.log("selected ----------------"+selected);
+				//console.log("_fieldTime_Series_Field_List"+_fieldTime_Series_Field_List);				
+				if(_fieldTime_Series_Field_List.indexOf(selected)!== -1)
+				{
+					$('#IntervalSpan').val("");
+					$('#txtIntervalSpan').val("");
+					$("#txtIntervalSpan").prop('disabled', true);					
+					$('#drpIntervalSpan').prop('disabled', true);	
+				}
+				else
+				{
+				 	$("#txtIntervalSpan").prop('disabled', false);					
+					$('#drpIntervalSpan').prop('disabled', false);		
+				}
+				
+				
+			});	
+			
+			///////////////////////////////////////////////////
+		
+        });
+    </script>
+
+</body>
+
+</html>
