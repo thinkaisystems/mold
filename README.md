@@ -1,7 +1,7 @@
 # mold
 The anomaly detection engine based on Machine Learning
 
-Hi, Welcome to mold - The ML based anomaly engine to find anonalies in data pattern and much more. We are in the process of designing this product to support multiple data systems. At present our powerful system supports belwo sources:
+Hi, Welcome to mold - The ML based anomaly engine to find anonalies in data pattern, outliers in security space and much more. We are in the process of designing this product to support multiple data systems. At present our powerful system supports belwo 2 data sources:
 
 1. Kafka topics.
 2. File-based input.
